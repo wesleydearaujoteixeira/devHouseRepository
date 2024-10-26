@@ -1,0 +1,62 @@
+
+
+.content {
+    display: flex;
+    gap: 10px;
+    margin-top: 2rem;
+}
+
+.content > p {
+    margin-bottom: 2rem;
+}
+
+.gridContent {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
+}
+
+.cartReserve {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.info > p {
+    margin-top: 2rem;
+}
+
+.btnReserve {
+    background-color: #2596be;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.cart {
+    width: 400px;
+}
+
+.location {
+    color: red;
+}
+
+
+
+@media screen and (max-width: 768px) {
+    .gridContent {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 10px;
+    }
+    
+}

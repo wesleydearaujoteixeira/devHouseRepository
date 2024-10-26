@@ -7,8 +7,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { createUser } from '../../services/servicesApi';
 import Link from 'next/link';
 
-
-
 // Schema Zod para validação do formulário
 const registerSchema = z.object({
   username: z.string().min(1, 'Username is required'),
