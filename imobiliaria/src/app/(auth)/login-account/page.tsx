@@ -6,25 +6,42 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { LoginUser } from '../../services/servicesApi';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 
 // Schema Zod para validação do formulário
 const registerSchema = z.object({
   email: z.string().email('Invalid email address'),
-  password: z.string().min(6, 'Password must be at least 6 characters'),
+  password: z.string().min(1, 'Password must be at least 6 characters'),
 });
 
 type RegisterFormData = z.infer<typeof registerSchema>;
 
 const Login = () => {
+
+
+
+  const navigation = useRouter();
+
   const { register, handleSubmit, formState: { errors } } = useForm<RegisterFormData>({
     resolver: zodResolver(registerSchema),
   });
 
   const onSubmit = async (data: RegisterFormData) => {
+    
     try {
       const response = await LoginUser(data);
-      console.log('User registered successfully:', response.data);
+      console.log('User logged successfully:', response.data);
+
+      localStorage.setItem('user_id', JSON.stringify(response.data.info._id));
+      
+      localStorage.setItem('token', JSON.stringify(response.data.token));
+      navigation.push('/');
+
+      setTimeout(() => {
+        location.reload();
+      }, 1000);
+
 
     } catch (error) {
       console.error('Error registering user:', error);

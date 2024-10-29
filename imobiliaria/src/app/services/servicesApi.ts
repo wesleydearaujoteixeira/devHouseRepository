@@ -9,4 +9,6 @@ export const createUser = (data: any) => GlobalApi.post('/create', data);
 
 export const LoginUser = (data: any) => GlobalApi.post('/login', data);
 
-export const getHouses = () => GlobalApi.get('/listarCasas')
+export const getHouses = () => GlobalApi.get('/listarCasas');
+
+

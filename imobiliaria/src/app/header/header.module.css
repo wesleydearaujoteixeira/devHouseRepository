@@ -32,3 +32,8 @@
     font-size: 1em;
     cursor: pointer;
 }
+
+.perfil {
+    display: flex;
+    gap: 2rem;
+}

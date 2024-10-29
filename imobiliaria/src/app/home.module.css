@@ -5,3 +5,14 @@
     text-align: center;
     height: 60px;
 }
+
+.dcs {
+    text-align: end;
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+    color: #2596be;
+    margin-right: 20px;
+    cursor: pointer;
+}
+  

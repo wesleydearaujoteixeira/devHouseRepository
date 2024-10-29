@@ -15,13 +15,23 @@ const CategoryList = () => {
     const [houses, setHouses] = useState <HouseTypes[]> ([]);
 
 
+    const [token, setToken] = useState<string | null>(null);
+
+    const loadToken = () => {
+        const storedToken = localStorage.getItem('token');
+      if (storedToken) {
+        setToken(storedToken);
+      }
+    }
+
     useEffect(() => {
+        
         getHouses().then((response) => {
-            console.log(response.data.houses);
             setHouses(response.data.houses);
         });
 
-  
+        loadToken();
+
     }, []);
 
 
@@ -36,6 +46,7 @@ const CategoryList = () => {
                             alt={'sac'}
                             width={300}
                             height={300}
+                            priority 
                     />
                         <p> {casa.description} </p>
                     </section>
@@ -46,7 +57,12 @@ const CategoryList = () => {
                 </div>
                 <div className={style.cartReserve} >
                     <h2> R$ {casa.price} </h2>
-                    <span className={style.btnReserve} > Reservar </span>
+                    
+                    {token && (
+                        <span className={style.btnReserve} > Reservar </span>
+                    )}
+
+                    
                 </div>
                 </div>
                 )

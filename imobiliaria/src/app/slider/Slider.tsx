@@ -39,7 +39,6 @@ const Slider = () => {
 
     getHouses().then((response) => {
       setCasas(response.data.houses);
-      console.log(response.data.houses);
     });
 
     handleResize();
@@ -69,6 +68,7 @@ const Slider = () => {
                       alt={''}
                       height={650}
                       width={1000}
+                      priority 
                   />
         
               </SwiperSlide>
