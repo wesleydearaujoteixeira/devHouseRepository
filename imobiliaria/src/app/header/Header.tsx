@@ -3,10 +3,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Perfil } from "../perfil/Perfil";
 import styles from './header.module.css';
 import { MdLogout } from "react-icons/md";
 import { useRouter } from "next/navigation";
+import { FaRegUserCircle } from "react-icons/fa";
+
 
 
 const Header = () => {
@@ -21,8 +22,6 @@ const Header = () => {
       setToken(storedToken);
     }
   }, []);
-
-
 
   const LogOut = () => {
 
@@ -39,7 +38,6 @@ const Header = () => {
 
 
   };
-
 
   return (
     <header className={styles.header}>
@@ -58,11 +56,13 @@ const Header = () => {
       <div>
         {token ? (
           <div className={styles.perfil} >
-
-            <Perfil />
+                <Link href={'/perfil-acess'} className={styles.underlineColor} >
+                    <FaRegUserCircle size={30} />
+                </Link>
                 <MdLogout size={30} 
+                  className={styles.underlineColor}
                   onClick={() => LogOut()} style={{cursor: 'pointer'}}
-                />
+              />
               
 
           </div>

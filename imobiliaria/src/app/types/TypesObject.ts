@@ -10,4 +10,16 @@ export type HouseTypes = {
     images_url: string;
     id: string;
   }
-   
+  
+
+export type casas = {
+    id: string;
+    description: string;
+    images: string;
+    images_url: string;
+    location: string;
+    owner: string;
+    price: number;
+    status: boolean;
+}
+    

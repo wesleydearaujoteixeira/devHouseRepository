@@ -35,5 +35,11 @@
 
 .perfil {
     display: flex;
-    gap: 2rem;
+    gap: 1rem;
+}
+
+.underlineColor {
+    color: #2596be;
+    text-transform: none;
+    text-decoration: none;
 }

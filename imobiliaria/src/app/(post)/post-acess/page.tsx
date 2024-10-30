@@ -84,7 +84,7 @@ function CreateHouse() {
           <input type="file" onChange={handleFileChange} />
         </div>
         <div>
-          <label>Descrição:</label>
+          <label> Descrição: </label>
           <textarea
             value={description}
             onChange={(e) => setDescription(e.target.value)}
