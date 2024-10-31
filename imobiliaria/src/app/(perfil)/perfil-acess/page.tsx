@@ -125,7 +125,11 @@ const Perfil = () => {
                     </div>
 
                       <div className={profile.crud_specific} >
-                        <span className={profile.edit}>   <MdEditNote size={20}/>  </span>
+                        <span className={profile.edit}>  
+                            <Link href={`/edit-acess/${casa.id}`}>
+                              <MdEditNote size={20}/>
+                            </Link>  
+                        </span>
                         <span className={profile.excluir} onClick={() => deleteOnHouse(casa.id)}> <FaRegTrashCan size={20}/> </span>
                       </div>
                 </div>
@@ -138,7 +142,7 @@ const Perfil = () => {
                 <h2> Não há casas cadastradas </h2>
                 <p> Se não há casas cadastradas cadastre uma agora </p>
                 <Link href='/post-acess'>  
-                  <button> Nova Casa </button>
+                  <button className={profile.btn} > Nova Casa </button>
                 </Link>
               </div>
             )}

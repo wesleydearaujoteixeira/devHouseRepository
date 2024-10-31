@@ -2,14 +2,12 @@
 
 import axios from 'axios';
 import { useState, useEffect, ChangeEvent, FormEvent } from 'react';
-import register from '../../(post)/post-acess/register.module.css';
-import { useParams } from 'next/navigation';
+import register from '../../../(post)/post-acess/register.module.css';
 
 
-function EditHouse() {
+function EditHouse({params}: any) {
 
-
-
+  const id = params.id;
 
   const [storedId, setStoredId] = useState<string | null>(null);
   const [storedUserId, setStoredUserId] = useState<string | null>(null);
@@ -57,25 +55,24 @@ function EditHouse() {
     formData.append('status', status.toString());
 
     try {
-      const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_URL_UPDATE}//${RemoveSomethingOntheString(storedUserId)}`,
-        formData,
-        {
-          
+      const response = await axios.patch(
+        `${process.env.NEXT_PUBLIC_URL_UPDATE}/${id}/${RemoveSomethingOntheString(storedUserId)}`, formData,
+        {  
           headers: {
             Authorization: `Bearer ${ storedId && JSON.parse(storedId) }`,
             'Content-Type': 'multipart/form-data',
           },
 
-        }
+        },
+        
       );
 
       console.log('Response:', response.data);
-      alert('Casa cadastrada com sucesso!');
+      alert('Casa atualizada com sucesso!');
 
     } catch (error: any) {
-      console.error('Erro ao cadastrar casa:', error.response?.data || error.message);
-      alert('Erro ao cadastrar casa.');
+      console.error('Erro ao atualizar casa:', error.response?.data || error.message);
+      alert('Erro ao atualizar casa.');
     }
   
   }
