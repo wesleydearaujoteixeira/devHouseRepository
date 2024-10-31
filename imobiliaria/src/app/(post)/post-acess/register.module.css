@@ -4,8 +4,66 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.863);
     height: 100vh;
     width: 100vw;
     color: white;
+}
+
+.btn {
+    background-color: #2596be;
+    color: white;
+    font-size: 2rem;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    margin: auto;
+    cursor: pointer;
+}
+
+.inputText {
+   width: 50%;
+    padding: 10px; 
+}
+
+
+
+.dic {
+    display: flex;
+    flex-direction: column;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 50%;
+}
+
+.ajuste {
+    display: flex;
+    flex-direction: column;
+}
+
+
+@media screen and (max-width: 768px) {
+    .btn {
+        background-color: #2596be;
+        color: white;
+        font-size: 2rem;
+        padding: 10px;
+        border-radius: 10px;
+        border: none;
+        width: 70%;
+        margin: auto;
+        text-align: center;
+        cursor: pointer;
+    }
+    
+    .inputText {
+        width: 100%;
+        padding: 10px; 
+    }
+ 
+    
 }

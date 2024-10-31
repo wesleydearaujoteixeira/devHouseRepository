@@ -2,9 +2,15 @@
 
 import axios from 'axios';
 import { useState, useEffect, ChangeEvent, FormEvent } from 'react';
-import register from './register.module.css';
+import register from '../../(post)/post-acess/register.module.css';
+import { useParams } from 'next/navigation';
 
-function CreateHouse() {
+
+function EditHouse() {
+
+
+
+
   const [storedId, setStoredId] = useState<string | null>(null);
   const [storedUserId, setStoredUserId] = useState<string | null>(null);
   const [file, setFile] = useState<File | null>(null);
@@ -27,9 +33,8 @@ function CreateHouse() {
     }
   };
 
-  const handleSubmit = async (e: FormEvent) => {
+  const handleEdit = async (e: FormEvent) => {
     e.preventDefault();
-
 
 
 
@@ -53,7 +58,7 @@ function CreateHouse() {
 
     try {
       const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_URL_POSTING}/${RemoveSomethingOntheString(storedUserId)}`,
+        `${process.env.NEXT_PUBLIC_URL_UPDATE}//${RemoveSomethingOntheString(storedUserId)}`,
         formData,
         {
           
@@ -78,7 +83,7 @@ function CreateHouse() {
 
   return (
     <div className={register.content}>
-      <form onSubmit={handleSubmit} className={register.form}>
+      <form onSubmit={handleEdit} className={register.form}>
         <div>
           <label> Imagem: </label>
           <input type="file" onChange={handleFileChange} />
@@ -120,10 +125,10 @@ function CreateHouse() {
               onChange={(e) => setStatus(e.target.checked)}
             />
         </div>
-        <button type="submit" className={register.btn} > Cadastrar </button>
+        <button type="submit" className={register.btn} > Salvar </button>
       </form>
     </div>
   );
 }
 
-export default CreateHouse;
+export default EditHouse;

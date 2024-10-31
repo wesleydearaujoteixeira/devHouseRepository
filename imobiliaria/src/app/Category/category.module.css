@@ -31,7 +31,52 @@
     justify-content: center;
     align-items: center;
 }
+
+
+
+
 .info > p {
+    margin-top: 2rem;
+}
+
+
+.edit {
+    background-color: rgb(15, 122, 15);
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+
+}
+
+.excluir {
+    background-color: rgb(182, 22, 22);
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+
+
+}
+
+.dash {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+
+
+.btn {
+    background-color: #2596be;
+    color: white;
+    font-size: 2rem;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    margin: auto;
+    cursor: pointer;
     margin-top: 2rem;
 }
 
@@ -61,7 +106,9 @@
 
 .crud_specific {
     display: flex;
+    align-items: center;
     gap: 1rem;
+
 
 }
 
