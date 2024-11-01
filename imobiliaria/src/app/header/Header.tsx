@@ -7,12 +7,20 @@ import styles from './header.module.css';
 import { MdLogout } from "react-icons/md";
 import { useRouter } from "next/navigation";
 import { FaRegUserCircle } from "react-icons/fa";
+import { IoMenu } from "react-icons/io5";
+import { IoCloseSharp } from "react-icons/io5";
+
+
 
 
 
 const Header = () => {
 
-  const [token, setToken] = useState<string | null>(null);
+  const [token, setToken] = useState<string | null> (null);
+  const [sideMenu, setSideMenu] = useState <string> ('100%');
+  const [state, setNewState] = useState <boolean> (true);
+
+
 
   const router = useRouter();
 
@@ -39,6 +47,24 @@ const Header = () => {
 
   };
 
+
+  const ChangeTheSideMenu = () => {
+    setNewState(true);
+    if (state) {
+      setSideMenu( '67%');
+    } 
+
+  }
+
+  const SideChange = () => {
+    setNewState(false);
+    if (!state) {
+      setSideMenu('100%');
+    }
+  }
+
+
+
   return (
     <header className={styles.header}>
       <div>
@@ -53,25 +79,56 @@ const Header = () => {
           />
         </Link>
       </div>
-      <div>
-        {token ? (
-          <div className={styles.perfil} >
-                <Link href={'/perfil-acess'} className={styles.underlineColor} >
-                    <FaRegUserCircle size={30} />
-                </Link>
-                <MdLogout size={30} 
-                  className={styles.underlineColor}
-                  onClick={() => LogOut()} style={{cursor: 'pointer'}}
-              />
-              
 
-          </div>
-        ) : (
-          <Link href="/login-account">
-            <button className={styles.btnSign}>Logar</button>
-          </Link>
-        )}
+      <div style={{cursor: 'pointer'}} onClick={() => ChangeTheSideMenu()}>
+        <IoMenu size={30}  className={styles.iconMenu} />
       </div>
+
+      
+      <div className={styles.menu} style={{
+        position: 'fixed',
+        left: sideMenu,
+        transition: 'width 0.5s ease-in-out',
+        top: 0,
+        right: 0,
+        bottom: 0
+        
+      }}>
+         
+         
+         
+        <div className={styles.container} >
+          <div> </div>
+          <div className={styles.myOptions} >
+            {token ? (
+              <div className={styles.perfil} >
+                    <span className={styles.underlineColor}> Meu perfil </span>
+                    <Link href={'/perfil-acess'} className={styles.underlineColor} >
+                        <span className={styles.underlineColor}> minhas casas </span>
+                    </Link>
+                    
+
+                    <Link href={'/minhasReservas'} className={styles.underlineColor}> minhas reservas </Link>
+                     
+                     
+                     <div>
+                       <span className={styles.underlineColor} onClick={() => LogOut()} style={{cursor: 'pointer'}}> Sair </span>
+                     </div>
+              </div>
+            ) : (
+              <Link href="/login-account">
+                <button className={styles.btnSign}>Logar</button>
+              </Link>
+            )}
+          </div>
+          
+          <span className={styles.closeSideBar}   >
+            <IoCloseSharp size={50} onClick={() => SideChange()}/>
+          </span>
+
+        </div>
+      </div>
+     
     </header>
   );
 };

@@ -3,6 +3,7 @@
 import axios from 'axios';
 import { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 import register from './register.module.css';
+import { RemoveSomethingOntheString } from '@/app/utils/RemoveString';
 
 function CreateHouse() {
   const [storedId, setStoredId] = useState<string | null>(null);
@@ -31,13 +32,7 @@ function CreateHouse() {
     e.preventDefault();
 
 
-
-
-    const RemoveSomethingOntheString = (uer_id: string | null) => {
-      const userIdValid = uer_id ? uer_id.replace(/"/g, '') : "";
-      return userIdValid;
-
-    }
+  
 
     if (!file || !description || !price || !location) {
       alert('Todos os campos são obrigatórios.');

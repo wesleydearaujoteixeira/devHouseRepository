@@ -6,9 +6,10 @@
     padding: 0px 10px;
     position: fixed;
     top: 0;
-    width: 100%;
+    width: 100vw;
     color: white;
     z-index: 2;
+    position: relative;
 }
 
 .header > div {
@@ -35,11 +36,76 @@
 
 .perfil {
     display: flex;
+    flex-direction: column;
     gap: 1rem;
 }
 
 .underlineColor {
     color: #2596be;
     text-transform: none;
+    font-size: 2rem;
     text-decoration: none;
+}
+
+.menu {
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #1b232a;
+    padding: 10px;
+    margin-right: 10px;
+    
+}
+
+.iconMenu {
+    margin-right: 20px;
+}
+
+
+
+.container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    position: relative;
+
+}
+
+.myOptions {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 45;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+}
+
+
+@media screen and (max-width: 768px) {
+    .myOptions {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 45;
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+
+}   
+    
+
+
+.closeSideBar {
+    top: 0;
+    right: 0;
+    color: white;
+    font-size: 2em;
+    cursor: pointer;
+    z-index: 2;
 }

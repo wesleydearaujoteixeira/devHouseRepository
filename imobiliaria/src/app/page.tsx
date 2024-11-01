@@ -40,7 +40,8 @@ export default function Home() {
         <div className={home.dcs} >
             <IoSend size={40} onClick={() => Post()}/>
         </div>
-      )}
+      )}     
+
     </main>
   );
 }

@@ -9,6 +9,7 @@ import { MdEditNote } from "react-icons/md";
 import { FaRegTrashCan } from "react-icons/fa6";
 import { MdLocationOn } from "react-icons/md";
 import Link from "next/link";
+import { RemoveSomethingOntheString } from "@/app/utils/RemoveString";
 
 
 
@@ -20,9 +21,7 @@ const Perfil = () => {
     const token = localStorage.getItem("token");
     const userId = localStorage.getItem("user_id");
 
-  const removeQuotesFromString = (userId: string | null) => {
-    return userId ? userId.replace(/"/g, "") : "";
-  };
+ 
 
   // Função para buscar as casas do usuário
   const fetchUserHomes = async (token: string, userId: any) => {
@@ -49,12 +48,12 @@ const Perfil = () => {
 };
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-    
 
+    if (typeof window !== "undefined") {
+  
       if (token && userId) {
         // Chamar a função de busca após garantir que temos os valores necessários
-        fetchUserHomes(token, removeQuotesFromString(userId));
+        fetchUserHomes(token, RemoveSomethingOntheString(userId));
       } else {
         console.warn("Token ou user_id ausente.");
       }
@@ -73,7 +72,7 @@ const Perfil = () => {
 
     try {
       const response = await axios.delete(
-        `${process.env.NEXT_PUBLIC_URL_DELETE}/${id}/${removeQuotesFromString(userId)}`,
+        `${process.env.NEXT_PUBLIC_URL_DELETE}/${id}/${RemoveSomethingOntheString(userId)}`,
         
         {
           

@@ -7,6 +7,7 @@ import style from './category.module.css';
 import { getHouses } from "../services/servicesApi";
 import { useEffect, useState } from "react";
 import { HouseTypes } from "../types/TypesObject";
+import Link from "next/link";
 
 
 const CategoryList = () => {
@@ -59,7 +60,9 @@ const CategoryList = () => {
                     <h2> R$ {casa.price} </h2>
                     
                     {token && (
-                        <span className={style.btnReserve} > Reservar </span>
+                        <Link href={`reserve-account/${casa._id}`}> 
+                            <span className={style.btnReserve} > Reservar </span>
+                        </Link>
                     )}
 
                     
