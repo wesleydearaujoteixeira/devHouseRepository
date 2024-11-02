@@ -12,3 +12,4 @@ export const LoginUser = (data: any) => GlobalApi.post('/login', data);
 export const getHouses = () => GlobalApi.get('/listarCasas');
 
 
+

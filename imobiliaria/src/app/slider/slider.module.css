@@ -8,6 +8,10 @@
     margin-top: 5rem;
 }
 
+.slide_container_flex {
+    display: flex;
+    justify-content: center;
+}
 
 .slide_item {
     width: 100%;
@@ -15,3 +19,22 @@
     object-fit: cover;
 }
 
+.spinner {
+    width: 300px;
+    height: 300px;
+    background-color: white;
+    border-radius: 50%;
+    margin-top: 2rem;
+    border-top: solid 10px #1a70ba;
+    animation: spin 1s linear infinite;
+
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

@@ -8,15 +8,19 @@ import { getHouses } from "../services/servicesApi";
 import { useEffect, useState } from "react";
 import { HouseTypes } from "../types/TypesObject";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import axios from "axios";
+import { RemoveSomethingOntheString } from "../utils/RemoveString";
 
 
 const CategoryList = () => {
 
-
     const [houses, setHouses] = useState <HouseTypes[]> ([]);
+    const [token, setToken] = useState <string | null> (null);
 
-
-    const [token, setToken] = useState<string | null>(null);
+    const user_id = localStorage.getItem('user_id');
+    const tokenId = localStorage.getItem('token') || '';
+    const router = useRouter();
 
     const loadToken = () => {
         const storedToken = localStorage.getItem('token');
@@ -36,8 +40,44 @@ const CategoryList = () => {
     }, []);
 
 
+
+    const FetchReservers = async (id: string) => {
+
+        if (user_id && tokenId) {
+           
+            try {
+                const response = await axios.post(
+                    `${process.env.NEXT_PUBLIC_URL_POST}/${id}/${RemoveSomethingOntheString(user_id)}`, 
+                    {}, 
+                    {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${JSON.parse(tokenId)}`
+                        }
+                    }
+                );
+
+                    console.log(response.data);
+
+                    alert("casa reservada");
+
+                    setTimeout(() => {
+                        router.push('/minhasReservas');
+                    }, 1000);
+
+            
+            } catch (err) {
+                console.error("Erro na requisição:", err);
+            }
+        }else {
+            alert("Falha no user_id e token");
+            return;
+        }
+    }
+
+
   return (
-    <main className={style.gridContent} > 
+    <main className={`${ houses.length > 0 ? style.gridContent : style.flexContent }`} > 
         {houses.length > 0 && houses.map((casa, index) => {
             return (
             <div className={style.cart} key={index}>
@@ -60,16 +100,22 @@ const CategoryList = () => {
                     <h2> R$ {casa.price} </h2>
                     
                     {token && (
-                        <Link href={`reserve-account/${casa._id}`}> 
-                            <span className={style.btnReserve} > Reservar </span>
-                        </Link>
+                            
+                        <span className={style.btnReserve} onClick={() => FetchReservers(casa._id)}> Reservar </span>
+                    
                     )}
 
                     
                 </div>
                 </div>
                 )
-            }) }           
+            })}
+
+            {houses.length <= 0 && (
+                <section className={style.spinner}>
+                </section>
+            )}
+          
     </main>
   )
 }

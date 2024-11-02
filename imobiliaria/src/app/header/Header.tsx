@@ -17,7 +17,7 @@ import { IoCloseSharp } from "react-icons/io5";
 const Header = () => {
 
   const [token, setToken] = useState<string | null> (null);
-  const [sideMenu, setSideMenu] = useState <string> ('100%');
+  const [sideMenu, setSideMenu] = useState <string> ('101%');
   const [state, setNewState] = useState <boolean> (true);
 
 
@@ -51,7 +51,7 @@ const Header = () => {
   const ChangeTheSideMenu = () => {
     setNewState(true);
     if (state) {
-      setSideMenu( '67%');
+      setSideMenu( '60%');
     } 
 
   }
@@ -90,7 +90,7 @@ const Header = () => {
         left: sideMenu,
         transition: 'width 0.5s ease-in-out',
         top: 0,
-        right: 0,
+        right: -1,
         bottom: 0
         
       }}>

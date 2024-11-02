@@ -17,6 +17,17 @@
     padding: 20px;
 }
 
+
+.flexContent {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+
 .cartReserve {
     display: flex;
     justify-content: space-between;
@@ -66,6 +77,25 @@
     gap: 20px;
 }
 
+.spinner {
+    width: 300px;
+    height: 300px;
+    background-color: white;
+    border-radius: 50%;
+    margin-top: 2rem;
+    border-top: solid 10px #1a70ba;
+    animation: spin 1s linear infinite;
+
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
 
 
 .btn {
@@ -85,6 +115,7 @@
     color: white;
     padding: 10px;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .cart {
@@ -114,7 +145,7 @@
 
 
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 900px) {
     .gridContent {
         display: flex;
         flex-direction: column;
@@ -137,7 +168,7 @@
 
 
 
-@media screen and (min-width: 769px) and (max-width: 1300px) {
+@media screen and (min-width: 901px) and (max-width: 1300px) {
     .gridContent {
         display: grid;
         grid-template-columns: 1fr 1fr;

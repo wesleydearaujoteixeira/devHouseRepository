@@ -52,7 +52,7 @@ const Slider = () => {
   }, []);
 
   return (
-    <div className={styles.slide_container} >
+    <div className={styles.slide_container}>
       
         <Swiper
         slidesPerView={casasPerPage}
@@ -74,6 +74,7 @@ const Slider = () => {
               </SwiperSlide>
           ))}
         </Swiper>
+       
       </div>
   );
 };

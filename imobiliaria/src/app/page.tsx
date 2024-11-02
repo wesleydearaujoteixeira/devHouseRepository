@@ -6,10 +6,8 @@ import { IoSend } from "react-icons/io5";
 import home from './home.module.css';
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 
 export default function Home() {
-
 
 
   const [token, setToken] = useState<string | null>(null);
