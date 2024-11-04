@@ -4,12 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import styles from './header.module.css';
-import { MdLogout } from "react-icons/md";
 import { useRouter } from "next/navigation";
-import { FaRegUserCircle } from "react-icons/fa";
 import { IoMenu } from "react-icons/io5";
 import { IoCloseSharp } from "react-icons/io5";
-
 
 
 
@@ -17,10 +14,8 @@ import { IoCloseSharp } from "react-icons/io5";
 const Header = () => {
 
   const [token, setToken] = useState<string | null> (null);
-  const [sideMenu, setSideMenu] = useState <string> ('101%');
+  const [sideMenu, setSideMenu] = useState <string> ('100%');
   const [state, setNewState] = useState <boolean> (true);
-
-
 
   const router = useRouter();
 
@@ -63,8 +58,6 @@ const Header = () => {
     }
   }
 
-
-
   return (
     <header className={styles.header}>
       <div>
@@ -102,14 +95,12 @@ const Header = () => {
           <div className={styles.myOptions} >
             {token ? (
               <div className={styles.perfil} >
-                    <span className={styles.underlineColor}> Meu perfil </span>
+                                          
                     <Link href={'/perfil-acess'} className={styles.underlineColor} >
                         <span className={styles.underlineColor}> minhas casas </span>
-                    </Link>
-                    
+                    </Link>                    
 
                     <Link href={'/minhasReservas'} className={styles.underlineColor}> minhas reservas </Link>
-                     
                      
                      <div>
                        <span className={styles.underlineColor} onClick={() => LogOut()} style={{cursor: 'pointer'}}> Sair </span>

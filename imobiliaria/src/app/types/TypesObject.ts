@@ -45,4 +45,11 @@ export type House = {
   __v: number;
 }
 
-    
+export type About = {
+  description: string;
+  id: string;
+  iamges: string;
+  images_url: string;
+  owner: string;
+  telefone: string;
+}
